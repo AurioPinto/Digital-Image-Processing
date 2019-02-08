@@ -22,4 +22,24 @@ if resp == '1':
     print(scanner.scaninfo())
     print('Ip Status:', scanner[ip_addr].state())
     print(scanner[ip_addr].all_protocolo())
-    print('open Portis:', scanner[ip_addr]['tcp'].key())
+    print('open Ports:', scanner[ip_addr]['tcp'].key())
+
+elif resp == '2':
+
+    print('Nmap Version:', scanner.nmap_version())
+    scanner.scan(ip_addr, '1-1024', '-v sU')
+    print(scanner.scaninfo())
+    print('Ip Status:', scanner[ip_addr].state())
+    print(scanner[ip_addr].all_protocolo())
+    print('open Ports:', scanner[ip_addr]['udp'].keys())
+elif resp == '3':
+
+    print('Nmap Version:', scanner.nmap_version())
+    scanner.scan(ip_addr, '1-1024', '-v sS -sV -sC -A -0')
+    print(scanner.scaninfo())
+    print('Ip Status:', scanner[ip_addr].state())
+    print(scanner[ip_addr].all_protocolo())
+    print('open Ports:', scanner[ip_addr]['udp'].keys())
+
+elif resp >= '4':
+    print('Please enter a valid option')
